@@ -98,6 +98,8 @@ public class JdbcUtils {
 
         columnName_DataTypeString.deleteCharAt(columnName_DataTypeString.lastIndexOf(","));
 
+        //Create Table xxx ==> tableName
+
         try {
             statement.execute("CREATE TABLE " + tableName + "(" + columnName_DataTypeString + ")"   );
             System.out.println("Table " + tableName + " created!");
@@ -108,6 +110,7 @@ public class JdbcUtils {
 
 
     //The method to insert data into table
+    //INSERT INTO tableName (columnName1, columnName2...) VALUES (value1, value2...)
 
     public static void insertDataIntoTable(String tableName,String... columnName_Value){
 
@@ -115,11 +118,14 @@ public class JdbcUtils {
         StringBuilder values = new StringBuilder("");
 
         for(String w:columnName_Value){
-            columnNames.append(w.split(" ")[0]).append(",");
-            values.append(w.split(" ")[1]).append(",");
+            int firstSpace = w.indexOf(" ");
+
+            columnNames.append(w.substring(0,firstSpace)).append(",");
+            values.append(w.substring(firstSpace)).append(",");
+
         }
 
-        //"INSERT INTO "+tableName+"(id, name, address) VALUES(123, 'john', 'new york')"
+        //"INSERT INTO " + tableName+ "(id smallint(3), name varchar(50), address varchar(80)) VALUES(123, 'john', 'new york')"
         columnNames.deleteCharAt(columnNames.lastIndexOf(","));
         values.deleteCharAt(values.lastIndexOf(","));
 
@@ -137,10 +143,10 @@ public class JdbcUtils {
 
     //The method to get column data into a list
     public static List<Object> getColumnList(String columnName,String tableName){
-        ResultSet resultSet;
+        ResultSet resultSet=null;
         List<Object> columnData = new ArrayList<>();
 
-        String query = "SELECT "+columnName+" FROM "+tableName;
+        String query = "SELECT "+ columnName + " FROM "+tableName;
 
         try {
             resultSet = statement.executeQuery(query);
@@ -154,13 +160,16 @@ public class JdbcUtils {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
+
             try {
-                columnData.add(resultSet.getObject(1));
+                columnData.add(resultSet.getObject(1));     //column1
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
 
         }
+
 
         return columnData;
     }
