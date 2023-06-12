@@ -13,7 +13,7 @@ public class PreparedStatement02 {
         //1.step: Create Connection to get connected to DB
         Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/jdbc_db", "dev_user", "12345");
 
-        //3.step: Create Statement  -- to execute SQL queries
+        //2.step: Create Statement  -- to execute SQL queries
         Statement statement = con.createStatement();
 
         //Check if connection is successfully

@@ -25,6 +25,12 @@ public class Execute01 {
         Statement statement = con.createStatement();
 
 
+        if(con!=null){
+            System.out.println("Connection is successfully");
+        } else {
+            System.out.println("Connection filed");
+        }
+
         //to test if we have created connection to DB
 //        System.out.println("Connected successfully");
 
@@ -36,10 +42,16 @@ public class Execute01 {
         System.out.println("sql1: " + sql1);
 
 
-        /*execute() returns boolean value and can be used for DDL (Data Definition Language) or
-        // DQL (Data Query Language)
-        --if it is used with DDL it return false
-        --if it is used with DQL it return true        */
+        /*execute() returns boolean value and can be used for DDL (Data Definition Language) or DQL (Data Query Language)
+        execute() method can be used in DDL (Data Definition Language-->Create Table, Drop Table, Alter Table)
+        and DQL (Data Query Language-->Select)
+        1)If you use execute() method with DDL everytime you will get false. Because there is no retrieving data from our database. Create,drop,alter
+        1)If you use execute() method with DQL you will get false or true.
+        execute(dql / query-->select) --> true if there is existing data
+        execute(ddl comment -->create, alter, drop) -->false  (we just say do an action. there is no any data which come from database)
+        If you get the resultSet object as return you will get true otherwise you will get false.
+
+        Requirements of DB testing:1-get connection with database  2-send queries to database 3-receive resultSet              */
 
 
         //TASK 2:add Varchar(20) column name "city" to employee table

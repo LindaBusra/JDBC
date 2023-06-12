@@ -26,7 +26,7 @@ public class ExecuteQuery01 {
     System.out.println("sql1: " + sql1);        //if we get some data it returns true, in previous lesson, when we created table it returned false.
 
     //for get the data
-    ResultSet resultSet = statement.executeQuery(query1);
+    ResultSet resultSet = statement.executeQuery(query1);   //a list of result
 
 
     while (resultSet.next()) {
