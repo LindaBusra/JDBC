@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Tasks {
+public class Tasks01 {
 
     //1. Session JDBC RECAP Session(DT-NT) 11.06.2023
     //https://lms.techproeducation.com/mod/book/view.php?id=8813
