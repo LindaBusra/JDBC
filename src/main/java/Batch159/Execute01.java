@@ -15,7 +15,7 @@ public class Execute01 {
 
         //1.step: Register Driver - optional
         Class.forName("org.postgresql.Driver"); //if it can not find the driver, it throws exception
-
+        //with forName() we can bring all methods from Driver class
 
         //2.step: Create Connection to get connected to DB
         Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/jdbc_db", "dev_user", "12345");
